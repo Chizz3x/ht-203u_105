@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <uses-permission android:name="android.permission.CAMERA"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <permission android:name="com.hti.xtherm.hti160203u.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION" android:protectionLevel="signature"/>
+    <uses-feature
+        android:name="android.hardware.camera"
+        android:required="false" />
+    <uses-permission android:name="com.hti.xtherm.hti160203u.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION"/>
+    <application
+        android:allowBackup="true"
+        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
+        android:dataExtractionRules="@xml/data_extraction_rules"
+        android:extractNativeLibs="false"
+        android:fullBackupContent="@xml/backup_rules"
+        android:icon="@mipmap/ic_launcher_hti"
+        android:label="@string/app_name"
+        android:name="com.hti.xtherm.hti160203u.ThermalApplication"
+        android:roundIcon="@mipmap/ic_launcher_hti"
+        android:supportsRtl="true"
+        android:theme="@style/RATheme"
+
+        tools:targetApi="28">
+        <activity
+            android:name=".ui.activity.HomeActivity"
+            android:launchMode="singleInstance"
+            android:exported="true"
+            android:label="@string/app_name"
+            android:screenOrientation="sensorLandscape">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+
+                <action android:name="android.hardware.usb.action.USB_DEVICE_ATTACHED"/>
+            </intent-filter>
+            <meta-data android:name="android.hardware.usb.action.USB_DEVICE_ATTACHED" android:resource="@xml/device_filter"/>
+        </activity>
+        <activity android:name="com.hti.xtherm.hti160203u.ui.activity.MediaActivity" android:screenOrientation="sensorPortrait"/>
+        <activity android:name="com.hti.xtherm.hti160203u.ui.activity.PictureActivity" android:screenOrientation="sensorPortrait"/>
+        <activity android:name="com.hti.xtherm.hti160203u.ui.activity.VideoActivity" android:screenOrientation="sensorPortrait"/>
+        <activity android:configChanges="keyboardHidden|orientation|screenSize" android:name="com.hti.xtherm.hti160203u.ui.activity.PlayActivity" android:screenOrientation="portrait"/>
+        <activity android:exported="false" android:label="" android:name="pub.devrel.easypermissions.AppSettingsDialogHolderActivity" android:theme="@style/EasyPermissions.Transparent"/>
+        <provider android:authorities="com.hti.xtherm.hti160203u.androidx-startup" android:exported="false" android:name="androidx.startup.InitializationProvider">
+            <meta-data android:name="androidx.emoji2.text.EmojiCompatInitializer" android:value="androidx.startup"/>
+            <meta-data android:name="androidx.lifecycle.ProcessLifecycleInitializer" android:value="androidx.startup"/>
+        </provider>
+    </application>
+
+</manifest>
