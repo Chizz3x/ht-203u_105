@@ -27,3 +27,5 @@ If a new filter is added, it should be done this way:
 When camera is active, take a note that this app and the device attached + the YOLOv8 drains battery like a leech who feeds on mAh.
 
 Production apk is shared on: APKMirror (link to be added once published)
+
+The app is tested on P10 and P30 huawei phones. Only 203U camera variant is tested, although theoretically 105 should work too.
